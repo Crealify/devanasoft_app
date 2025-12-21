@@ -33,7 +33,22 @@ class MyApp extends StatelessWidget {
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return Loader();
           }
-          return Column();
+          return StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection("users")
+                .doc(FirebaseAuth.instance.currentUser!.uid)
+                .snapshots(),
+            builder: (context, snapshot) {
+              // if (!snapshot.hasData || !(snapshot.data?.exists ?? false)) { //gptcode-teest
+              if (!snapshot.hasData || !snapshot.data!.exists) {
+                return Column();
+              } else if (snapshot.connectionState == ConnectionState.waiting) {
+                return Loader();
+              } else {
+                return LandingPage();
+              }
+            },
+          );
         },
       ),
     );
