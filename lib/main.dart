@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:devanasoft_app/core/screens/loader.dart';
 import 'package:devanasoft_app/features/auth/login_page.dart';
 import 'package:devanasoft_app/firebase_options.dart';
+import 'package:devanasoft_app/landing_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,7 +25,17 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(
       //   colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       // ),
-      home: const LoginPage(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return LoginPage();
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            return Loader();
+          }
+          return Column();
+        },
+      ),
     );
   }
 }
