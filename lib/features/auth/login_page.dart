@@ -38,7 +38,7 @@ class LoginPage extends ConsumerWidget {
 
               GestureDetector(
                 onTap: () {
-                  ref.read(authServiceProvider);
+                  ref.read(authServiceProvider).signInWithGoogle();
                 },
                 child: Card(
                   elevation: 6,
