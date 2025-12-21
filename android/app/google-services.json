@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "430831725180",
+    "project_id": "devanasoft-app-np",
+    "storage_bucket": "devanasoft-app-np.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430831725180:android:3b968b3a0404ffe89b77f9",
+        "android_client_info": {
+          "package_name": "com.example.devanasoft_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABGq_dbcHRyUSQ0f88vvAVzJh5sgV0O2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
