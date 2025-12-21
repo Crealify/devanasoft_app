@@ -39,9 +39,10 @@ class MyApp extends StatelessWidget {
                 .doc(FirebaseAuth.instance.currentUser!.uid)
                 .snapshots(),
             builder: (context, snapshot) {
+              // final user = FirebaseAuth.instance.currentUser;
               // if (!snapshot.hasData || !(snapshot.data?.exists ?? false)) { //gptcode-teest
               if (!snapshot.hasData || !snapshot.data!.exists) {
-                return Column();
+                return Container();
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return Loader();
               } else {
