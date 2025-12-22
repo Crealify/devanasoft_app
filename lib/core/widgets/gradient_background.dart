@@ -51,11 +51,16 @@ class GradientBackground extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(height: 70),
-                      Image.asset(
-                        "assets/images/devanasoft_logos.png",
-                        height: 40,
+                      Icon(
+                        Icons.mobile_friendly_rounded,
+                        color: Colors.white,
+                        size: 40,
                       ),
 
+                      // Image.asset(
+                      //   "assets/images/devanasoft_logos.png",
+                      //   height: 40,
+                      // ),
                       const SizedBox(height: 16),
 
                       const Text(
