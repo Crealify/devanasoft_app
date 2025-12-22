@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devanasoft_app/core/screens/loader.dart';
 import 'package:devanasoft_app/features/auth/Pages/login_page.dart';
+import 'package:devanasoft_app/features/screens/register_screen.dart';
 import 'package:devanasoft_app/firebase_options.dart';
 import 'package:devanasoft_app/features/Presentation/DashBoard/landing_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return LoginPage();
+            return RegisterScreen();
+            // return LoginPage();
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return Loader();
           }
