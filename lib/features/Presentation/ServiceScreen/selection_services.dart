@@ -38,7 +38,7 @@ class SelectionServices extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 120),
                 child: Container(
-                  color: Colors.blueAccent,
+                  color: Colors.blueAccent.shade200,
                   height: 03,
                   width: 60,
                 ),

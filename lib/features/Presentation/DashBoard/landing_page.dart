@@ -37,6 +37,8 @@ class LandingPage extends StatelessWidget {
               description:
                   'Creating private, modern and securechannels to utilize different financial instruments -saving,icons,payments,insurance and trading',
               image: 'assets/images/financialbg.png',
+
+              
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25, left: 25),

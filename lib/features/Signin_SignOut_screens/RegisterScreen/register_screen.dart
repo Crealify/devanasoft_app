@@ -1,9 +1,9 @@
 import 'package:devanasoft_app/core/widgets/custom_input.dart';
 import 'package:devanasoft_app/core/widgets/gradient_background.dart';
 import 'package:devanasoft_app/features/auth/Pages/login_page.dart';
-import 'package:devanasoft_app/features/screens/SignInScreen/signInScreen.dart';
-import 'package:devanasoft_app/features/screens/model/user_register_model.dart';
-import 'package:devanasoft_app/features/screens/RegisterScreen/otp_screen.dart';
+import 'package:devanasoft_app/features/Signin_SignOut_screens/SignInScreen/signin_screen.dart';
+import 'package:devanasoft_app/features/Signin_SignOut_screens/model/user_register_model.dart';
+import 'package:devanasoft_app/features/Signin_SignOut_screens/RegisterScreen/otp_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../core/widgets/custom_button.dart';
 

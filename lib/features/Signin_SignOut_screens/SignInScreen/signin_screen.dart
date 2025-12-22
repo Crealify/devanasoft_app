@@ -1,36 +1,25 @@
 import 'package:devanasoft_app/core/widgets/custom_button.dart';
 import 'package:devanasoft_app/core/widgets/custom_input.dart';
 import 'package:devanasoft_app/core/widgets/gradient_background.dart';
-import 'package:devanasoft_app/features/Presentation/DashBoard/landing_page.dart';
-import 'package:devanasoft_app/features/screens/model/otp_model.dart';
+import 'package:devanasoft_app/features/Signin_SignOut_screens/RegisterScreen/otp_screen.dart';
+import 'package:devanasoft_app/features/Signin_SignOut_screens/RegisterScreen/register_screen.dart';
+import 'package:devanasoft_app/features/Signin_SignOut_screens/model/user_signin_model.dart';
 import 'package:flutter/material.dart';
 
-class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key, required String arguments});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<OtpScreen> createState() => _OtpScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _OtpScreenState extends State<OtpScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _otpController = TextEditingController();
   final _phoneController = TextEditingController();
 
   bool _isLoading = false;
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final args = ModalRoute.of(context)?.settings.arguments;
-      if (args != null) {
-        _phoneController.text = args.toString();
-      }
-    });
-  }
-
-  void _verifyOtp() async {
+  void _signInPatient() async {
     if (!_formKey.currentState!.validate()) return;
 
     setState(() {
@@ -40,12 +29,9 @@ class _OtpScreenState extends State<OtpScreen> {
     // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
-    final model = OtpModel(
-      phoneNumber: _phoneController.text,
-      otp: int.tryParse(_otpController.text) ?? 0,
-    );
+    final model = UserSigninModel(phoneNumber: _phoneController.text);
 
-    print('Patient OTP Data: ${model.toJson()}');
+    print('Patient Sign-in Data: ${model.toJson()}');
 
     setState(() {
       _isLoading = false;
@@ -53,15 +39,16 @@ class _OtpScreenState extends State<OtpScreen> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('OTP verified successfully!'),
+        content: Text('Sign-in successful! OTP sent to your phone.'),
         backgroundColor: Colors.green,
       ),
     );
 
-    // Navigator.pushReplacementNamed(context, '/patient_dashboard');
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LandingPage()),
+      MaterialPageRoute(
+        builder: (context) => OtpScreen(arguments: _phoneController.text),
+      ),
     );
   }
 
@@ -86,19 +73,13 @@ class _OtpScreenState extends State<OtpScreen> {
                   child: Column(
                     children: [
                       Text(
-                        'OTP Verification',
+                        'Sign In',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.primary,
-                          fontFamily: 'Poppins',
+                        
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Enter the OTP sent to your phone number',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.grey, fontSize: 14),
                       ),
                       const SizedBox(height: 24),
                       CustomInput(
@@ -110,43 +91,30 @@ class _OtpScreenState extends State<OtpScreen> {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your phone number';
                           }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      CustomInput(
-                        label: 'OTP',
-                        hintText: 'Enter 6-digit OTP',
-                        controller: _otpController,
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter OTP';
-                          }
-                          if (value.length != 6) {
-                            return 'OTP must be 6 digits';
+                          if (value.length != 10) {
+                            return 'Please enter a valid 10-digit phone number';
                           }
                           return null;
                         },
                       ),
                       const SizedBox(height: 32),
                       CustomButton(
-                        text: 'Verify OTP',
-                        onPressed: _verifyOtp,
+                        text: 'Send OTP',
+                        onPressed: _signInPatient,
                         isLoading: _isLoading,
                       ),
                       const SizedBox(height: 16),
                       TextButton(
                         onPressed: () {
-                          print('Resend OTP requested');
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('OTP resent to your phone'),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RegisterScreen(),
                             ),
                           );
                         },
                         child: const Text(
-                          'Resend OTP',
+                          'Don\'t have an account? Register',
                           style: TextStyle(
                             color: Color(0xFF1E88E5),
                             fontWeight: FontWeight.w500,
@@ -166,7 +134,6 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   void dispose() {
-    _otpController.dispose();
     _phoneController.dispose();
     super.dispose();
   }
