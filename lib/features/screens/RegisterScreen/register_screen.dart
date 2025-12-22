@@ -1,8 +1,11 @@
 import 'package:devanasoft_app/core/widgets/custom_input.dart';
 import 'package:devanasoft_app/core/widgets/gradient_background.dart';
 import 'package:devanasoft_app/features/auth/Pages/login_page.dart';
+import 'package:devanasoft_app/features/screens/SignInScreen/signInScreen.dart';
+import 'package:devanasoft_app/features/screens/model/user_register_model.dart';
+import 'package:devanasoft_app/features/screens/RegisterScreen/otp_screen.dart';
 import 'package:flutter/material.dart';
-import '../../core/widgets/custom_button.dart';
+import '../../../core/widgets/custom_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -12,9 +15,55 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final _formKey = GlobalKey<FormState>();
   final _phoneController = TextEditingController();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
+
+  bool _isLoading = false;
+
+  void _registerPatient() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    // Simulate API call
+    await Future.delayed(const Duration(seconds: 2));
+
+    final model = UserRegisterModel(
+      phoneNumber: _phoneController.text,
+      name: _nameController.text,
+      email: _emailController.text,
+    );
+
+    print('Patient Register Data: ${model.toJson()}');
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Registration successful! OTP sent to your phone.'),
+        backgroundColor: Colors.green,
+      ),
+    );
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OtpScreen(arguments: _phoneController.text),
+      ),
+    );
+
+    // Navigator.pushNamed(
+    //   context,
+    //   '/patient_otp',
+    //   arguments: _phoneController.text,
+    // );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Form(
+                  key: _formKey,
                   child: Column(
                     children: [
                       const SizedBox(height: 10),
@@ -40,6 +90,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         label: 'Full Name',
                         hintText: 'Enter your full name',
                         controller: _nameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your full name';
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 16),
                       CustomInput(
@@ -47,6 +103,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         hintText: 'Enter your email',
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email';
+                          }
+                          if (!value.contains('@')) {
+                            return 'Please enter a valid email';
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 16),
                       CustomInput(
@@ -54,13 +119,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         hintText: 'Enter your phone number',
                         controller: _phoneController,
                         keyboardType: TextInputType.phone,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your phone number';
+                          }
+                          if (value.length != 10) {
+                            return 'Please enter a valid 10-digit phone number';
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 32),
-                      CustomButton(text: 'Register', onPressed: () {}),
+                      CustomButton(
+                        text: 'Register',
+                        onPressed: _registerPatient,
+                        isLoading: _isLoading,
+                      ),
                       const SizedBox(height: 16),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/user_signin');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignInScreen(),
+                            ),
+                          );
                         },
                         child: const Text(
                           'Already have an account? Sign In',
@@ -75,7 +158,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 12),
             GoogleLoginPage(),
           ],
         ),
