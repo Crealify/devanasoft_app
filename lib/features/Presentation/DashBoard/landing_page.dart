@@ -1,4 +1,5 @@
-import 'package:devanasoft_app/features/Presentation/ServiceScreen/selection_services.dart';
+import 'package:devanasoft_app/features/Presentation/ServiceScreens/animated_image_slider.dart';
+import 'package:devanasoft_app/features/Presentation/ServiceScreens/selection_services.dart';
 import 'package:devanasoft_app/features/auth/Pages/logout_page.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,8 @@ class LandingPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+
+            AnimatedImageSlider() ,
             SelectionServices(
               title: 'Financial Services',
               description:
