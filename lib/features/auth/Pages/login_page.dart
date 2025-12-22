@@ -1,4 +1,4 @@
-import 'package:devanasoft_app/features/services/auth_services.dart';
+import 'package:devanasoft_app/features/auth/services/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
