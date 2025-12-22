@@ -43,7 +43,7 @@ class SelectionServices extends StatelessWidget {
                   width: 60,
                 ),
               ),
-              SizedBox(height: 08),
+              SizedBox(height: 10),
               Text(
                 description,
                 maxLines: 4,

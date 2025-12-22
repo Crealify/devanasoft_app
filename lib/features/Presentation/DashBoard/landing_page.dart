@@ -1,4 +1,5 @@
 import 'package:devanasoft_app/features/Presentation/ServiceScreen/selection_services.dart';
+import 'package:devanasoft_app/features/auth/Pages/logout_page.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatelessWidget {
@@ -15,9 +16,17 @@ class LandingPage extends StatelessWidget {
           child: Image.asset('assets/images/devanasoft_logos.png'),
         ),
 
-        actions: const [
-          Icon(Icons.menu, color: Colors.blueAccent, size: 40),
-          SizedBox(width: 12),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LogoutPage()),
+              );
+            },
+            child: const Icon(Icons.menu, color: Colors.blueAccent, size: 40),
+          ),
+          const SizedBox(width: 12),
         ],
       ),
       body: SingleChildScrollView(
