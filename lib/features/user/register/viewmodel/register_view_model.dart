@@ -37,12 +37,9 @@ class RegisterViewModel extends ChangeNotifier {
       ),
     );
 
-    Navigator.pushNamed(
-      context,
-      '/patient_otp',
-      arguments: phoneController.text,
-    );
+    Navigator.pushNamed(context, '/otp', arguments: phoneController.text);
   }
+  
 
   @override
   void dispose() {

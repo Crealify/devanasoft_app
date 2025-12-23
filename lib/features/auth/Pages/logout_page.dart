@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../user/register/view/register_screen.dart';
-
 class LogoutPage extends ConsumerWidget {
   const LogoutPage({super.key});
 
@@ -27,7 +25,7 @@ class LogoutPage extends ConsumerWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            // ================= USER CARD =================
+           
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(
@@ -50,7 +48,7 @@ class LogoutPage extends ConsumerWidget {
                     ),
                     const SizedBox(height: 15),
                     Text(
-                      user?.displayName ?? "User",
+                      user?.displayName ?? "user",
                       style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -58,7 +56,15 @@ class LogoutPage extends ConsumerWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      user?.email ?? "",
+                      user?.email ?? " email",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      user?.email ?? " phone number",
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.grey.shade600,
@@ -73,7 +79,7 @@ class LogoutPage extends ConsumerWidget {
 
             const SizedBox(height: 30),
 
-            // ================= LOGOUT BUTTON =================
+           
             Card(
               elevation: 3,
               shape: RoundedRectangleBorder(
@@ -83,9 +89,9 @@ class LogoutPage extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(15),
                 onTap: () async {
                   await FirebaseAuth.instance.signOut();
-                  Navigator.pushAndRemoveUntil(
+                  Navigator.pushNamedAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (_) => const RegisterView()),
+                    '/register',
                     (route) => false,
                   );
                 },
