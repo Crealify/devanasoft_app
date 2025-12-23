@@ -2,8 +2,8 @@ import 'package:devanasoft_app/features/auth/services/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GoogleLoginPage extends ConsumerWidget {
-  const GoogleLoginPage({super.key});
+class GooglesignInPage extends ConsumerWidget {
+  const GooglesignInPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -25,7 +25,6 @@ class LogoutPage extends ConsumerWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-           
             Card(
               elevation: 4,
               shape: RoundedRectangleBorder(
@@ -79,7 +78,6 @@ class LogoutPage extends ConsumerWidget {
 
             const SizedBox(height: 30),
 
-           
             Card(
               elevation: 3,
               shape: RoundedRectangleBorder(
@@ -91,7 +89,7 @@ class LogoutPage extends ConsumerWidget {
                   await FirebaseAuth.instance.signOut();
                   Navigator.pushNamedAndRemoveUntil(
                     context,
-                    '/register',
+                    '/signin',
                     (route) => false,
                   );
                 },

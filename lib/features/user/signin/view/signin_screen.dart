@@ -4,6 +4,7 @@ import 'package:devanasoft_app/core/widgets/gradient_background.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../auth/Pages/google_signup_page.dart';
 import '../viewmodel/signin_view_model.dart';
 
 class SigninView extends StatefulWidget {
@@ -19,11 +20,11 @@ class _SignInScreenState extends State<SigninView> {
     final vm = Provider.of<SigninViewModel>(context, listen: false);
     return GradientBackground(
       showCurvedHeader: true,
-      child: SingleChildScrollView(
+      child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            const SizedBox(height: 120),
+            const SizedBox(height: 160),
             Card(
               elevation: 8,
               shape: RoundedRectangleBorder(
@@ -70,7 +71,7 @@ class _SignInScreenState extends State<SigninView> {
                       const SizedBox(height: 16),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/signin");
+                          Navigator.pushNamed(context, "/register");
                         },
                         child: const Text(
                           'Don\'t have an account? Register',
@@ -85,6 +86,8 @@ class _SignInScreenState extends State<SigninView> {
                 ),
               ),
             ),
+            Spacer(),
+            GooglesignInPage(),
           ],
         ),
       ),

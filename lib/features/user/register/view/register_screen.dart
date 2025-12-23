@@ -1,6 +1,5 @@
 import 'package:devanasoft_app/core/widgets/custom_input.dart';
 import 'package:devanasoft_app/core/widgets/gradient_background.dart';
-import 'package:devanasoft_app/features/auth/Pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -9,18 +8,17 @@ import '../viewmodel/register_view_model.dart';
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-     final vm = Provider.of<RegisterViewModel>(context, listen: false);
+    final vm = Provider.of<RegisterViewModel>(context, listen: false);
 
     return GradientBackground(
       showCurvedHeader: true,
-      child: SingleChildScrollView(
+      child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 140),
             Card(
               elevation: 8,
               shape: RoundedRectangleBorder(
@@ -79,7 +77,7 @@ class RegisterView extends StatelessWidget {
                       const SizedBox(height: 32),
                       CustomButton(
                         text: 'Register',
-                        onPressed:() async {
+                        onPressed: () async {
                           vm.register(context);
                         },
                         isLoading: vm.isLoading,
@@ -87,7 +85,6 @@ class RegisterView extends StatelessWidget {
                       const SizedBox(height: 16),
                       TextButton(
                         onPressed: () {
-
                           Navigator.pushNamed(context, '/signin');
                         },
                         child: const Text(
@@ -103,8 +100,8 @@ class RegisterView extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 12),
-            GoogleLoginPage(),
+            // SizedBox(height: 12),
+            // GooglesignInPage(),
           ],
         ),
       ),
