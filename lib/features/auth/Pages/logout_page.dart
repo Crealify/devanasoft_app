@@ -61,14 +61,14 @@ class LogoutPage extends ConsumerWidget {
                         color: Colors.grey.shade600,
                       ),
                     ),
-                    const SizedBox(height: 5),
-                    Text(
-                      user?.email ?? " phone number",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.grey.shade600,
-                      ),
-                    ),
+                    // const SizedBox(height: 5),
+                    // Text(
+                    //   user?.phoneNumber ?? " 98********",
+                    //   style: TextStyle(
+                    //     fontSize: 20,
+                    //     color: Colors.grey.shade600,
+                    //   ),
+                    // ),
                     const SizedBox(height: 20),
                     Divider(color: Colors.grey.shade300),
                   ],

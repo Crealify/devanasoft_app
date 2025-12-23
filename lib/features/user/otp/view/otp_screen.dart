@@ -19,7 +19,7 @@ class OtpView extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            const SizedBox(height: 120),
+            const SizedBox(height: 160),
 
             Card(
               elevation: 8,
@@ -43,16 +43,15 @@ class OtpView extends StatelessWidget {
 
                       const SizedBox(height: 20),
 
-                      CustomInput(
-                        label: "Phone Number",
-                        hintText: "Enter phone number",
-                        controller: vm.phoneController,
-                        keyboardType: TextInputType.phone,
-                        validator: (v) =>
-                            v!.isEmpty ? "Please enter phone no." : null,
-                      ),
-                      const SizedBox(height: 16),
-
+                      // CustomInput(
+                      //   label: "Phone Number",
+                      //   hintText: "Enter phone number",
+                      //   controller: vm.phoneController,
+                      //   keyboardType: TextInputType.phone,
+                      //   validator: (v) =>
+                      //       v!.isEmpty ? "Please enter phone no." : null,
+                      // ),
+                      // const SizedBox(height: 16),
                       CustomInput(
                         label: "OTP",
                         hintText: "Enter 6-digit OTP",
