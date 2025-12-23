@@ -4,6 +4,7 @@ import 'package:devanasoft_app/features/Signin_SignOut_screens/RegisterScreen/re
 import 'package:devanasoft_app/features/auth/Pages/username_page.dart';
 import 'package:devanasoft_app/firebase_options.dart';
 import 'package:devanasoft_app/features/Presentation/DashBoard/landing_page.dart';
+import 'package:devanasoft_app/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DEVABASOFT APP',
-      debugShowCheckedModeBanner: true,
-      
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/register',
+      routes: appRoutes,
+
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {

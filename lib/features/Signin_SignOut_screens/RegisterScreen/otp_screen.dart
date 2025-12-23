@@ -1,7 +1,6 @@
 import 'package:devanasoft_app/core/widgets/custom_button.dart';
 import 'package:devanasoft_app/core/widgets/custom_input.dart';
 import 'package:devanasoft_app/core/widgets/gradient_background.dart';
-import 'package:devanasoft_app/features/Presentation/DashBoard/landing_page.dart';
 import 'package:devanasoft_app/features/Signin_SignOut_screens/model/otp_model.dart';
 import 'package:flutter/material.dart';
 
@@ -57,11 +56,12 @@ class _OtpScreenState extends State<OtpScreen> {
         backgroundColor: Colors.green,
       ),
     );
+    Navigator.pushNamed(context, '/landing');
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => LandingPage()),
-    );
+  //   Navigator.push(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => LandingPage()),
+  //   );
   }
 
   @override
