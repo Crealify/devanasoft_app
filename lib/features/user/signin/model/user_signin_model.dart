@@ -1,13 +1,14 @@
-class UserSigninModel {
+
+class SigninModel {
   final String phoneNumber;
 
-  UserSigninModel({
+  SigninModel({
     required this.phoneNumber,
   });
 
   Map<String, dynamic> toJson() {
     return {
-      'phoneNumber': phoneNumber,
+      'phone_number': phoneNumber,
     };
   }
 }
