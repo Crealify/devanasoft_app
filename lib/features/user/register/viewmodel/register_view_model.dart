@@ -25,7 +25,7 @@ class RegisterViewModel extends ChangeNotifier {
       email: emailController.text,
     );
 
-    print('Patient Register Data: ${model.toJson()}');
+    print('Register Data: ${model.toJson()}');
 
     isLoading = false;
     notifyListeners();
@@ -39,7 +39,6 @@ class RegisterViewModel extends ChangeNotifier {
 
     Navigator.pushNamed(context, '/otp', arguments: phoneController.text);
   }
-  
 
   @override
   void dispose() {
