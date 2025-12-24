@@ -65,16 +65,16 @@ class OtpViewModel extends ChangeNotifier {
           content: Text("Invalid OTP"),
           backgroundColor: Colors.red,
         ),
-      );
+      ); 
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("OTP verified successfully!"),
-        backgroundColor: Colors.green,
-      ),
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   const SnackBar(
+    //     content: Text("OTP verified successfully!"),
+    //     backgroundColor: Colors.green,
+    //   ),
+    // );
 
     Navigator.pushReplacementNamed(context, '/landing');
   }
