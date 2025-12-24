@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, strict_top_level_inference
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devanasoft_app/features/auth/models/user_model.dart';

@@ -19,6 +19,3 @@ final anyUserDataProvider = FutureProvider.family((ref, userId) async {
       .fetchAnyUserData(userId);
   return user;
 });
-
-/// Normal (non-firebase) logged-in user
-final localUserProvider = StateProvider<RegisterModel?>((ref) => null);

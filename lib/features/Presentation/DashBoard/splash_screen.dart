@@ -31,8 +31,8 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.forward();
 
     // Navigate to next screen after 3 seconds
-    Timer(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed('/landing');
+    Timer(const Duration(seconds: 4), () {
+      Navigator.of(context).pushReplacementNamed('/authwriter');
     });
   }
 

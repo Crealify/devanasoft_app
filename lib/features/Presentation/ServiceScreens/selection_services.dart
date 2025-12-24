@@ -22,7 +22,7 @@ class SelectionServices extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 150,
                 width: 160,
                 child: Image.asset(image, fit: BoxFit.cover),

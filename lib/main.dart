@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: appRoutes,
       initialRoute: '/splash',
-      home: AuthWrapper(),
+
     );
   }
 }

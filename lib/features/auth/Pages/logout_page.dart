@@ -1,6 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../services/auth_services.dart';
 
 class LogoutPage extends ConsumerWidget {
   const LogoutPage({super.key});
@@ -61,14 +65,6 @@ class LogoutPage extends ConsumerWidget {
                         color: Colors.grey.shade600,
                       ),
                     ),
-                    // const SizedBox(height: 5),
-                    // Text(
-                    //   user?.phoneNumber ?? " 98********",
-                    //   style: TextStyle(
-                    //     fontSize: 20,
-                    //     color: Colors.grey.shade600,
-                    //   ),
-                    // ),
                     const SizedBox(height: 20),
                     Divider(color: Colors.grey.shade300),
                   ],
@@ -86,7 +82,8 @@ class LogoutPage extends ConsumerWidget {
               child: InkWell(
                 borderRadius: BorderRadius.circular(15),
                 onTap: () async {
-                  await FirebaseAuth.instance.signOut();
+                  await ref.read(authServiceProvider).signOut();
+
                   Navigator.pushNamedAndRemoveUntil(
                     context,
                     '/signin',
@@ -115,7 +112,62 @@ class LogoutPage extends ConsumerWidget {
                       const SizedBox(width: 20),
                       const Expanded(
                         child: Text(
-                          "Sign Out",
+                          "Google Sign Out",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 18,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+
+            Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(15),
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/signin',
+                    (route) => false,
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 18,
+                    horizontal: 20,
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.red.shade100,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(
+                          Icons.logout,
+                          color: Colors.red,
+                          size: 26,
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      const Expanded(
+                        child: Text(
+                          "Sign Out Locally",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,

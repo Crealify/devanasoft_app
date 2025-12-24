@@ -19,6 +19,7 @@ class AuthService {
       idToken: googleAuth.idToken,
     );
     await auth.signInWithCredential(credential);
+    print('Firebase User: $user');
   }
 
   Future<void> signOut() async {
