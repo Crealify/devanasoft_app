@@ -19,6 +19,8 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
+
         leadingWidth: 120,
         backgroundColor: Colors.white,
         leading: Padding(
@@ -40,6 +42,7 @@ class LandingPage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         child: Column(
           children: [
             AnimatedImageSlider(),
