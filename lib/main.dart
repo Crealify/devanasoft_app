@@ -1,4 +1,3 @@
-import 'package:devanasoft_app/authwriter.dart';
 import 'package:devanasoft_app/core/widgets/colors.dart';
 import 'package:devanasoft_app/firebase_options.dart';
 import 'package:devanasoft_app/routes.dart';
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: appRoutes,
       initialRoute: '/splash',
-
     );
   }
 }

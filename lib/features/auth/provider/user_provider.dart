@@ -1,8 +1,6 @@
 import 'package:devanasoft_app/features/auth/models/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod/legacy.dart';
 
-import '../../user/register/model/user_register_model.dart';
 import '../services/user_data_service.dart';
 
 final currentUserProvider = FutureProvider<UserModel>((ref) async {
