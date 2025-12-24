@@ -1,7 +1,16 @@
 import 'package:devanasoft_app/features/Presentation/ServiceScreens/animated_image_slider.dart';
 import 'package:devanasoft_app/features/Presentation/ServiceScreens/selection_services.dart';
+import 'package:devanasoft_app/features/Presentation/widgets/copyright_section.dart';
 import 'package:devanasoft_app/features/auth/Pages/logout_page.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/about_section.dart';
+import '../widgets/application.dart';
+import '../widgets/footer_section.dart';
+import '../widgets/stats.section.dart';
+import '../widgets/tesm_member_sections.dart';
+import '../widgets/trusted_company_section.dart';
+import '../widgets/workprogress_station.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -33,15 +42,12 @@ class LandingPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
-            AnimatedImageSlider() ,
+            AnimatedImageSlider(),
             SelectionServices(
               title: 'Financial Services',
               description:
                   'Creating private, modern and securechannels to utilize different financial instruments -saving,icons,payments,insurance and trading',
               image: 'assets/images/financialbg.png',
-
-              
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25, left: 25),
@@ -63,6 +69,17 @@ class LandingPage extends StatelessWidget {
                   'Not only Digital Transformation, but also Modernization to radically cut down the current digital gap and gain early competitive advantage',
               image: 'assets/images/retailfinal.png',
             ),
+            SizedBox(height: 20),
+
+            aboutSection(),
+            applicationCards(),
+            workProcessSection(),
+            statsSection(),
+            teamMembersSection(),
+            trustedCompaniesSection(),
+            footerSection(),
+            copyrightSection(),
+            const SizedBox(height: 30),
           ],
         ),
       ),
